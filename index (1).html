@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#075b43">
+<title>Nibraas Islamic</title>
+<style>
+:root{--green:#075b43;--gold:#d8ad55;--ink:#18352d;--paper:#f5f7f4}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:linear-gradient(135deg,#064b39,#0b7655);color:white;padding:24px 16px;text-align:center}
+.brand{font-size:28px;font-weight:800;letter-spacing:.5px}.sub{margin-top:6px;color:#e9f4ee}
+nav{display:flex;gap:8px;overflow:auto;padding:10px;background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
+nav button,.btn{border:0;border-radius:9px;padding:11px 14px;background:var(--green);color:white;font-weight:700;cursor:pointer;white-space:nowrap}
+nav button{background:#e8f0eb;color:var(--green)}nav button.active{background:var(--green);color:white}
+main{max-width:1000px;margin:20px auto;padding:0 14px}.panel{display:none}.panel.active{display:block}
+.hero,.card{background:white;border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 3px 14px #1231}
+.hero{border-left:5px solid var(--gold)}h1,h2,h3{color:var(--green)}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.tile{background:#fff;border-radius:14px;padding:18px;text-align:center;box-shadow:0 2px 10px #1231}.tile b{display:block;font-size:20px;color:var(--green);margin-bottom:6px}
+label{display:block;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #cbd8d0;border-radius:9px;font-size:16px;background:#fff}
+textarea{min-height:90px}form{max-width:650px}.muted{color:#61736a;font-size:14px}.item{padding:12px 0;border-bottom:1px solid #e5ece7}
+table{width:100%;border-collapse:collapse;background:white}td,th{padding:10px;border:1px solid #dce6df;text-align:left}th{background:#eaf2ed}
+footer{text-align:center;padding:25px;color:#61736a}.notice{background:#fff6dc;border-left:4px solid var(--gold);padding:12px;border-radius:8px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.danger{background:#a43a35}.secondary{background:#64756c}
+@media print{nav,.no-print,header{display:none!important}body{background:white}.panel{display:none!important}#results.panel.active,#certificate.panel.active{display:block!important}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">نِبْرَاس إِسْلَامِي</div>
+ <div class="brand">NIBRAAS ISLAMIC</div>
+ <div class="sub">Kituo cha Elimu ya Kiislamu na Maktaba ya Kidijitali</div>
+</header>
+<nav class="no-print" id="nav">
+ <button class="active" data-page="home">Nyumbani</button><button data-page="lessons">Masomo</button><button data-page="library">Maktaba</button><button data-page="student">Usajili wa Mwanafunzi</button><button data-page="teacher">Walimu</button><button data-page="results">Matokeo</button><button data-page="certificate">Vyeti</button><button data-page="about">Kuhusu</button>
+</nav>
+<main>
+<section id="home" class="panel active">
+ <div class="hero"><h1>Karibu Nibraas Islamic</h1><p>Elimu yenye mwanga, maadili na maarifa. Jifunze Qur’ani Tukufu, Hadithi, Fiqhi, Sira, Lugha ya Kiarabu na Tarbia.</p><p class="muted">Tumia menyu iliyo juu kufungua sehemu mbalimbali za mfumo.</p></div>
+ <div class="tiles">
+  <div class="tile"><b>القرآن الكريم</b>Qur’ani Tukufu</div><div class="tile"><b>الحديث</b>Hadithi</div><div class="tile"><b>الفقه</b>Fiqhi</div><div class="tile"><b>السيرة</b>Sira</div><div class="tile"><b>اللغة العربية</b>Lugha ya Kiarabu</div><div class="tile"><b>التربية</b>Tarbia</div>
+ </div>
+ <div class="card"><h2>Huduma za mfumo</h2><p>Usajili wa wanafunzi na walimu, orodha ya masomo, maktaba, kumbukumbu za matokeo na maandalizi ya cheti.</p><div class="notice">Kumbuka: taarifa unazoingiza katika toleo hili huhifadhiwa kwenye kifaa na kivinjari hiki pekee. Ili zitumike na watu wengi, mfumo utahitaji hifadhidata ya mtandaoni.</div></div>
+</section>
+<section id="lessons" class="panel"><div class="card"><h2>Masomo yanayotolewa</h2><div id="lessonList"></div></div></section>
+<section id="library" class="panel"><div class="card"><h2>Maktaba ya Kidijitali</h2><p>Ongeza rejea au kiungo cha kitabu/nyenzo za masomo.</p><form id="bookForm"><label>Jina la kitabu au somo</label><input id="bookTitle" required><label>Kiungo (URL) – si lazima</label><input id="bookUrl" type="url" placeholder="https://..."><label>Maelezo</label><textarea id="bookDesc"></textarea><button class="btn">Hifadhi kwenye maktaba</button></form><div id="books"></div></div></section>
+<section id="student" class="panel"><div class="card"><h2>Usajili wa Mwanafunzi</h2><form id="studentForm"><label>Jina kamili</label><input id="sName" required><label>Jinsia</label><select id="sGender"><option>Msichana</option><option>Mvulana</option></select><label>Darasa</label><select id="sClass"><option>Darasa la 1</option><option>Darasa la 2</option><option>Darasa la 3</option><option>Darasa la 4</option><option>Darasa la 5</option></select><label>Jina la mzazi/mlezi</label><input id="sParent"><label>Namba ya simu ya mzazi (hiari)</label><input id="sPhone" type="tel"><button class="btn">Sajili mwanafunzi</button></form><div id="students"></div></div></section>
+<section id="teacher" class="panel"><div class="card"><h2>Usajili wa Mwalimu</h2><form id="teacherForm"><label>Jina kamili</label><input id="tName" required><label>Somo</label><select id="tSubject"><option>Qur’ani</option><option>Hadithi</option><option>Fiqhi</option><option>Sira</option><option>Lugha ya Kiarabu</option><option>Tarbia</option></select><label>Namba ya simu (hiari)</label><input id="tPhone" type="tel"><button class="btn">Hifadhi mwalimu</button></form><div id="teachers"></div></div></section>
+<section id="results" class="panel"><div class="card"><h2>Kuingiza Matokeo</h2><form id="resultForm"><label>Jina la mwanafunzi</label><input id="rName" required><label>Somo</label><select id="rSubject"><option>Qur’ani</option><option>Hadithi</option><option>Fiqhi</option><option>Sira</option><option>Lugha ya Kiarabu</option><option>Tarbia</option></select><label>Alama (0–100)</label><input id="rMark" type="number" min="0" max="100" required><button class="btn">Hifadhi matokeo</button></form><div id="resultList"></div><button class="btn no-print" onclick="window.print()">Chapisha matokeo</button></div></section>
+<section id="certificate" class="panel"><div class="card"><h2>Cheti cha Mwanafunzi</h2><form id="certForm"><label>Jina la mwanafunzi</label><input id="cName" required><label>Jina la kozi/masomo</label><input id="cCourse" value="Masomo ya Kiislamu" required><label>Tarehe</label><input id="cDate" type="date"><button class="btn">Tengeneza cheti</button></form><div id="certOutput"></div></div></section>
+<section id="about" class="panel"><div class="card"><h2>Kuhusu Nibraas Islamic</h2><p>Nibraas Islamic ni jukwaa la kujifunzia na kuhifadhi nyenzo za elimu ya Kiislamu. Lengo lake ni kusaidia wanafunzi, walimu na wazazi kupata huduma za elimu kwa urahisi.</p><p><b>Dira:</b> Kueneza elimu yenye manufaa na maadili mema.</p><p><b>Dhima:</b> Kuwezesha ufundishaji na ujifunzaji wa masomo ya Kiislamu.</p></div></section>
+</main>
+<footer>© <span id="year"></span> Nibraas Islamic · Elimu ni nuru</footer>
+<script>
+const $=id=>document.getElementById(id);
+const get=k=>JSON.parse(localStorage.getItem('nibraas_'+k)||'[]');
+const put=(k,v)=>localStorage.setItem('nibraas_'+k,JSON.stringify(v));
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');}));
+const lessons=[['Qur’ani Tukufu','Kusoma, tajwidi na kuhifadhi Qur’ani.'],['Hadithi','Kujifunza hadithi na mafunzo yake.'],['Fiqhi','Ibada na hukumu za Kiislamu.'],['Sira','Maisha na mwenendo wa Mtume ﷺ.'],['Lugha ya Kiarabu','Kusoma, kuandika na sarufi ya Kiarabu.'],['Tarbia','Malezi, tabia njema na adabu.']];
+$('lessonList').innerHTML=lessons.map(x=>`<div class="item"><b>${x[0]}</b><br><span class="muted">${x[1]}</span></div>`).join('');
+function renderBooks(){$('books').innerHTML=get('books').map((b,i)=>`<div class="item"><b>${esc(b.title)}</b><p>${esc(b.desc)}</p>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">Fungua nyenzo</a>`:''} <button class="btn danger no-print" onclick="removeItem('books',${i})">Futa</button></div>`).join('')||'<p class="muted">Bado hakuna vitabu vilivyoongezwa.</p>'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function removeItem(k,i){let a=get(k);a.splice(i,1);put(k,a);renderAll()}
+$('bookForm').onsubmit=e=>{e.preventDefault();let a=get('books');a.push({title:$('bookTitle').value,url:$('bookUrl').value,desc:$('bookDesc').value});put('books',a);e.target.reset();renderBooks()};
+$('studentForm').onsubmit=e=>{e.preventDefault();let a=get('students');a.push({name:$('sName').value,gender:$('sGender').value,cl:$('sClass').value,parent:$('sParent').value,phone:$('sPhone').value});put('students',a);e.target.reset();renderStudents()};
+function renderStudents(){$('students').innerHTML='<h3>Wanafunzi waliosajiliwa ('+get('students').length+')</h3>'+get('students').map((s,i)=>`<div class="item">${esc(s.name)} — ${esc(s.cl)} (${esc(s.gender)}) <button class="btn danger no-print" onclick="removeItem('students',${i})">Futa</button></div>`).join('')}
+$('teacherForm').onsubmit=e=>{e.preventDefault();let a=get('teachers');a.push({name:$('tName').value,subject:$('tSubject').value,phone:$('tPhone').value});put('teachers',a);e.target.reset();renderTeachers()};
+function renderTeachers(){$('teachers').innerHTML='<h3>Walimu ('+get('teachers').length+')</h3>'+get('teachers').map((t,i)=>`<div class="item">${esc(t.name)} — ${esc(t.subject)} <button class="btn danger no-print" onclick="removeItem('teachers',${i})">Futa</button></div>`).join('')}
+function grade(n){return n>=80?'A':n>=70?'B':n>=60?'C':n>=50?'D':'F'}
+$('resultForm').onsubmit=e=>{e.preventDefault();let n=Number($('rMark').value);let a=get('results');a.push({name:$('rName').value,subject:$('rSubject').value,mark:n,grade:grade(n)});put('results',a);e.target.reset();renderResults()};
+function renderResults(){$('resultList').innerHTML='<h3>Matokeo yaliyohifadhiwa</h3><table><tr><th>Mwanafunzi</th><th>Somo</th><th>Alama</th><th>Daraja</th><th class="no-print">Kitendo</th></tr>'+get('results').map((r,i)=>`<tr><td>${esc(r.name)}</td><td>${esc(r.subject)}</td><td>${r.mark}</td><td>${r.grade}</td><td class="no-print"><button class="btn danger" onclick="removeItem('results',${i})">Futa</button></td></tr>`).join('')+'</table>'}
+$('certForm').onsubmit=e=>{e.preventDefault();$('certOutput').innerHTML=`<div class="card" style="border:5px double #b58b39;text-align:center;padding:32px;margin-top:20px"><h2>نِبْرَاس إِسْلَامِي</h2><h1>CERTIFICATE OF ACHIEVEMENT</h1><p>Cheti hiki kinatolewa kwa</p><h2>${esc($('cName').value)}</h2><p>Kwa kukamilisha: <b>${esc($('cCourse').value)}</b></p><p>Tarehe: ${esc($('cDate').value)}</p><p style="margin-top:45px">________________________<br>Uongozi wa Nibraas Islamic</p></div><button class="btn no-print" onclick="window.print()">Chapisha / Hifadhi PDF</button>`};
+function renderAll(){renderBooks();renderStudents();renderTeachers();renderResults()}
+$('year').textContent=new Date().getFullYear();renderAll();
+</script>
+</body></html>
