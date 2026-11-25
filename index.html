@@ -1,69 +1,1051 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="sw">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b6048">
-  <meta name="description" content="P. Islamic Academy — elimu ya Qur'an, Hadithi, Fiqhi, Sira na lugha ya Kiarabu.">
-  <title>P. Islamic Academy</title>
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075b43">
+<meta name="description" content="P. Islamic Academy - Kituo cha elimu ya Kiislamu na maktaba ya kidijitali.">
+<title>P. ISLAMIC ACADEMY</title>
+
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+<style>
+:root {
+  --green:#075b43;
+  --dark:#063d30;
+  --gold:#d6ad50;
+  --light:#f4f8f5;
+  --white:#ffffff;
+  --text:#24352e;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:Arial, sans-serif;
+  background:var(--light);
+  color:var(--text);
+  line-height:1.7;
+}
+
+header {
+  background:var(--green);
+  color:white;
+  padding:14px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  border-bottom:3px solid var(--gold);
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-icon {
+  width:48px;
+  height:48px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  color:var(--gold);
+}
+
+.logo h2 {
+  font-size:19px;
+  color:white;
+}
+
+.logo small {
+  color:#e8d6a5;
+}
+
+nav {
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+nav a:hover { color:var(--gold); }
+
+button {
+  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  padding:11px 17px;
+  font-weight:bold;
+}
+
+.pi-button {
+  background:var(--gold);
+  color:#173b2b;
+}
+
+.hero {
+  background:linear-gradient(120deg,#063d30,#087653);
+  color:white;
+  text-align:center;
+  padding:75px 20px;
+}
+
+.hero h1 {
+  font-size:35px;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+
+.hero h2 {
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.hero p {
+  max-width:700px;
+  margin:auto;
+}
+
+.arabic {
+  font-family:"Traditional Arabic",serif;
+  font-size:29px;
+  color:var(--gold);
+  margin:15px 0;
+  direction:rtl;
+}
+
+.hero-buttons {
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.gold-button {
+  background:var(--gold);
+  color:#183c2d;
+}
+
+.outline-button {
+  background:transparent;
+  border:1px solid white;
+  color:white;
+}
+
+section {
+  padding:45px 6%;
+}
+
+.section-title {
+  text-align:center;
+  color:var(--green);
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.section-description {
+  text-align:center;
+  margin-bottom:30px;
+  color:#63746a;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+
+.card {
+  background:white;
+  padding:23px;
+  border-radius:10px;
+  border-bottom:3px solid var(--gold);
+  box-shadow:0 3px 12px #0000000d;
+  transition:.2s;
+}
+
+.card:hover {
+  transform:translateY(-4px);
+}
+
+.card-icon {
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.card h3 {
+  color:var(--green);
+  margin-bottom:8px;
+}
+
+.card button {
+  background:var(--green);
+  color:white;
+  margin-top:13px;
+}
+
+.card button:hover { background:var(--dark); }
+
+.about {
+  background:#e9f1eb;
+}
+
+.about-content {
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+}
+
+.library {
+  background:white;
+}
+
+.search-box {
+  display:block;
+  width:100%;
+  max-width:500px;
+  margin:20px auto;
+  padding:13px;
+  border:1px solid #ccd8cf;
+  border-radius:7px;
+  font-size:16px;
+}
+
+.lesson {
+  background:#f5f8f5;
+  padding:17px;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+
+.lesson h3 { color:var(--green); }
+
+.panel {
+  background:white;
+  border-radius:10px;
+  padding:25px;
+  max-width:800px;
+  margin:auto;
+  box-shadow:0 3px 15px #0000000c;
+}
+
+.panel h3 {
+  color:var(--green);
+  margin-bottom:12px;
+}
+
+.form-input {
+  width:100%;
+  padding:12px;
+  margin:8px 0 15px;
+  border:1px solid #ccd8cf;
+  border-radius:6px;
+  font-size:15px;
+}
+
+.green-button {
+  background:var(--green);
+  color:white;
+}
+
+.result {
+  background:#e9f1eb;
+  padding:15px;
+  border-radius:7px;
+  margin-top:15px;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.stat {
+  text-align:center;
+  background:white;
+  padding:20px;
+  border-radius:9px;
+  border:1px solid #e5eadf;
+}
+
+.stat h2 { color:var(--green); }
+
+footer {
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+footer p { margin:5px; }
+
+footer span { color:var(--gold); }
+
+.hidden { display:none; }
+
+#message {
+  margin-top:12px;
+  padding:10px;
+  border-radius:6px;
+  background:#edf3ee;
+  overflow-wrap:anywhere;
+}
+
+@media(max-width:700px) {
+  header { justify-content:center; }
+  nav { justify-content:center; }
+  .hero h1 { font-size:27px; }
+  .hero h2 { font-size:20px; }
+  section { padding:35px 5%; }
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="#home">
-      <img src="logo.svg" alt="P. Islamic Academy logo">
-      <span><b>P. ISLAMIC ACADEMY</b><small>Elimu • Maarifa • Maadili</small></span>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">۞</div>
+    <div>
+      <h2>P. ISLAMIC ACADEMY</h2>
+      <small>Elimu • Maarifa • Maadili</small>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#home">Nyumbani</a>
+    <a href="#courses">Masomo</a>
+    <a href="#library">Maktaba</a>
+    <a href="#exams">Mitihani</a>
+    <a href="#about">Kuhusu</a>
+  </nav>
+
+  <button class="pi-button" onclick="piLogin()">
+    π Pi Login
+  </button>
+</header>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+  <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+  <h1>P. ISLAMIC ACADEMY</h1>
+
+  <h2>Karibu katika Chuo cha Elimu ya Kiislamu</h2>
+
+  <p>
+    Jifunze Qur'an, Hadithi, Fiqhi, Sira, Aqida na
+    Lugha ya Kiarabu kupitia mfumo wetu wa elimu
+    ya Kiislamu wa kidijitali.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#courses">
+      <button class="gold-button">Anza Kujifunza</button>
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Fungua menyu">☰</button>
-    <nav id="nav">
-      <a href="#home">Mwanzo</a><a href="#masomo">Masomo</a><a href="#maktaba">Maktaba</a><a href="#kuhusu">Kuhusu</a>
-    </nav>
-    <button class="pi-btn" id="piLogin">Ingia kwa Pi</button>
-  </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">KARIBU P. ISLAMIC ACADEMY</span>
-        <h1>Jifunze dini, panua maarifa, jenga maadili.</h1>
-        <p>Jukwaa la kujifunzia elimu ya Kiislamu kwa watoto na watu wazima kupitia masomo yaliyopangwa kwa urahisi.</p>
-        <div class="hero-actions"><a class="primary" href="#masomo">Anza kujifunza</a><a class="secondary" href="#kuhusu">Kifahamu chuo</a></div>
-        <p class="status" id="piStatus" aria-live="polite">Unaweza kuvinjari masomo bila kuingia.</p>
+    <a href="#library">
+      <button class="outline-button">Tembelea Maktaba</button>
+    </a>
+  </div>
+</div>
+
+<!-- STATS -->
+
+<section>
+  <h2 class="section-title">Mfumo Wetu wa Elimu</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <h2>📖</h2>
+      <p>Qur'an Tukufu</p>
+    </div>
+
+    <div class="stat">
+      <h2>📚</h2>
+      <p>Maktaba ya Elimu</p>
+    </div>
+
+    <div class="stat">
+      <h2>📝</h2>
+      <p>Mitihani</p>
+    </div>
+
+    <div class="stat">
+      <h2>🎓</h2>
+      <p>Ufuatiliaji wa Masomo</p>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+
+<section id="courses">
+  <h2 class="section-title">Masomo Yetu</h2>
+  <p class="section-description">
+    Chagua somo unalotaka kujifunza.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <h3>Qur'an Tukufu</h3>
+      <p>Kusoma, kuhifadhi na kujifunza tafsiri ya Qur'an.</p>
+      <button onclick="showLesson('quran')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📜</div>
+      <h3>Hadithi</h3>
+      <p>Kujifunza Hadithi za Mtume Muhammad ﷺ.</p>
+      <button onclick="showLesson('hadith')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <h3>Fiqhi</h3>
+      <p>Elimu ya ibada na hukumu mbalimbali za Kiislamu.</p>
+      <button onclick="showLesson('fiqh')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🕌</div>
+      <h3>Sira</h3>
+      <p>Historia ya maisha ya Mtume Muhammad ﷺ.</p>
+      <button onclick="showLesson('sira')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔤</div>
+      <h3>Lugha ya Kiarabu</h3>
+      <p>Kujifunza kusoma, kuandika na kuzungumza Kiarabu.</p>
+      <button onclick="showLesson('arabic')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☪️</div>
+      <h3>Aqida</h3>
+      <p>Misingi ya itikadi na imani ya Kiislamu.</p>
+      <button onclick="showLesson('aqida')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌱</div>
+      <h3>Tarbia</h3>
+      <p>Malezi, tabia njema na maadili ya Kiislamu.</p>
+      <button onclick="showLesson('tarbia')">Fungua Somo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h3>Imla</h3>
+      <p>Kuandika maneno na sentensi za Kiarabu kwa usahihi.</p>
+      <button onclick="showLesson('imla')">Fungua Somo</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- LESSON DISPLAY -->
+
+<section id="lesson-area" class="hidden">
+  <div class="panel">
+    <h2 class="section-title" id="lesson-title">Somo</h2>
+    <div id="lesson-content"></div>
+    <button class="green-button" onclick="closeLesson()">Funga Somo</button>
+  </div>
+</section>
+
+<!-- LIBRARY -->
+
+<section class="library" id="library">
+  <h2 class="section-title">Maktaba ya Kidijitali</h2>
+
+  <p class="section-description">
+    Tafuta masomo na maarifa ya Kiislamu.
+  </p>
+
+  <input
+    class="search-box"
+    type="search"
+    id="search"
+    placeholder="Tafuta somo hapa..."
+    oninput="searchLessons()"
+  >
+
+  <div id="library-items">
+
+    <div class="lesson">
+      <h3>Qur'an Tukufu</h3>
+      <p>Elimu ya kusoma Qur'an na kuhifadhi sura.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Hadithi</h3>
+      <p>Utangulizi wa elimu ya Hadithi.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Fiqhi</h3>
+      <p>Masomo ya Twahara, Swala na ibada.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Sira</h3>
+      <p>Historia ya Mtume Muhammad ﷺ.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Lugha ya Kiarabu</h3>
+      <p>Herufi, maneno na sarufi ya Kiarabu.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>Aqida</h3>
+      <p>Misingi ya imani ya Kiislamu.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXAMS -->
+
+<section id="exams">
+  <h2 class="section-title">Mitihani ya Wanafunzi</h2>
+
+  <p class="section-description">
+    Jibu swali la mfano na uone matokeo yako.
+  </p>
+
+  <div class="panel">
+
+    <h3>Mtihani wa Maarifa ya Kiislamu</h3>
+
+    <p><b>1. Kitabu kitakatifu cha Waislamu ni kipi?</b></p>
+
+    <label>
+      <input type="radio" name="q1" value="0"> Injili
+    </label><br>
+
+    <label>
+      <input type="radio" name="q1" value="1"> Qur'an
+    </label><br>
+
+    <label>
+      <input type="radio" name="q1" value="0"> Taurati
+    </label><br><br>
+
+    <p><b>2. Mtume wa mwisho ni nani?</b></p>
+
+    <label>
+      <input type="radio" name="q2" value="0"> Musa عليه السلام
+    </label><br>
+
+    <label>
+      <input type="radio" name="q2" value="1"> Muhammad ﷺ
+    </label><br>
+
+    <label>
+      <input type="radio" name="q2" value="0"> Ibrahim عليه السلام
+    </label><br><br>
+
+    <p><b>3. Swala tano huswaliwa mara ngapi kwa siku?</b></p>
+
+    <label>
+      <input type="radio" name="q3" value="1"> Mara tano
+    </label><br>
+
+    <label>
+      <input type="radio" name="q3" value="0"> Mara tatu
+    </label><br>
+
+    <label>
+      <input type="radio" name="q3" value="0"> Mara saba
+    </label><br><br>
+
+    <button class="green-button" onclick="markExam()">
+      Wasilisha Majibu
+    </button>
+
+    <div id="exam-result" class="result hidden"></div>
+
+    <p style="font-size:12px;color:#777;margin-top:12px">
+      Huu ni mtihani wa mfano wa kujifunzia.
+    </p>
+
+  </div>
+</section>
+
+<!-- STUDENTS -->
+
+<section id="students" class="about">
+  <h2 class="section-title">Wanafunzi na Walimu</h2>
+
+  <p class="section-description">
+    Mfumo wa kusaidia usimamizi wa elimu.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-icon">👨‍🎓</div>
+      <h3>Wanafunzi</h3>
+      <p>Usajili na ufuatiliaji wa maendeleo ya masomo.</p>
+      <button onclick="showMessage('student')">Fungua Sehemu</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👨‍🏫</div>
+      <h3>Walimu</h3>
+      <p>Usimamizi wa masomo na mitihani.</p>
+      <button onclick="showMessage('teacher')">Fungua Sehemu</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Matokeo</h3>
+      <p>Ufuatiliaji wa alama na maendeleo ya wanafunzi.</p>
+      <button onclick="showMessage('results')">Fungua Sehemu</button>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Vyeti</h3>
+      <p>Usimamizi wa vyeti vya kuhitimu masomo.</p>
+      <button onclick="showMessage('certificates')">Fungua Sehemu</button>
+    </div>
+
+  </div>
+
+  <div id="management-message" class="panel hidden" style="margin-top:20px">
+    <h3 id="management-title"></h3>
+    <p id="management-text"></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-content">
+    <h2 class="section-title">Kuhusu P. Islamic Academy</h2>
+
+    <p>
+      P. Islamic Academy ni mradi wa elimu ya Kiislamu
+      unaolenga kurahisisha upatikanaji wa maarifa ya
+      Qur'an, Hadithi, Fiqhi, Sira, Aqida na lugha ya Kiarabu.
+    </p>
+
+    <p style="margin-top:15px">
+      Lengo letu ni kuunganisha elimu ya Kiislamu na
+      teknolojia ili kuwafikia watoto, vijana na watu wazima.
+    </p>
+
+    <div class="arabic" style="color:var(--green)">
+      وَقُلْ رَبِّ زِدْنِي عِلْمًا
+    </div>
+
+    <p>
+      "Na sema: Mola wangu, nizidishie elimu."
+    </p>
+  </div>
+</section>
+
+<!-- PI ACCOUNT -->
+
+<section id="account">
+  <h2 class="section-title">Pi Network Account</h2>
+
+  <div class="panel" style="text-align:center">
+    <div class="card-icon">π</div>
+
+    <h3>P. Islamic Academy on Pi Network</h3>
+
+    <p>
+      Tumia akaunti yako ya Pi Network kuingia
+      katika mfumo huu.
+    </p>
+
+    <button class="pi-button" onclick="piLogin()">
+      Ingia kwa Pi Network
+    </button>
+
+    <div id="message">
+      Hujajiunga na Pi Network bado.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <h2>P. ISLAMIC ACADEMY</h2>
+
+  <p>Elimu • Maarifa • Maadili</p>
+
+  <p class="arabic">العلم نور</p>
+
+  <p>
+    © <span id="year"></span>
+    P. Islamic Academy. Haki zote zimehifadhiwa.
+  </p>
+
+  <p>Powered by Pi Network Technology</p>
+</footer>
+
+<script>
+
+// YEAR
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+
+// PI NETWORK INITIALIZATION
+
+let piInitialized = false;
+
+try {
+  if (window.Pi) {
+    window.Pi.init({
+      version: "2.0",
+      sandbox: true
+    });
+
+    piInitialized = true;
+  }
+} catch (error) {
+  console.log("Pi initialization:", error);
+}
+
+
+// PI LOGIN
+
+async function piLogin() {
+
+  const message = document.getElementById("message");
+
+  if (!window.Pi || !piInitialized) {
+    message.textContent =
+      "Pi SDK haijapatikana. Fungua programu hii kupitia Pi Browser na hakikisha Pi SDK imepakiwa.";
+    return;
+  }
+
+  message.textContent = "Inaunganisha na Pi Network...";
+
+  try {
+
+    const scopes = ["username"];
+
+    const onIncompletePaymentFound = function(payment) {
+      console.log("Incomplete payment:", payment);
+    };
+
+    const user = await window.Pi.authenticate(
+      scopes,
+      onIncompletePaymentFound
+    );
+
+    message.innerHTML =
+      "Umefanikiwa kuingia!<br>" +
+      "Username: <b>" +
+      escapeHTML(user.username) +
+      "</b>";
+
+  } catch (error) {
+
+    message.textContent =
+      "Imeshindikana kuingia: " + error.message;
+
+  }
+}
+
+
+// HTML ESCAPE
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, function(char) {
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[char];
+  });
+}
+
+
+// LESSONS
+
+const lessons = {
+
+  quran: {
+    title:"Qur'an Tukufu",
+    content:`
+      <div class="lesson">
+        <h3>Utangulizi wa Qur'an</h3>
+        <p>Qur'an ni kitabu cha Mwenyezi Mungu
+        kilichoteremshwa kwa Mtume Muhammad ﷺ.</p>
+        <p class="arabic" style="color:#075b43">
+        اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+        </p>
       </div>
-      <div class="hero-art"><img src="logo.svg" alt="Nembo ya P. Islamic Academy"><div class="art-caption">مَرْحَبًا بِكُمْ<br><small>Karibuni katika elimu</small></div></div>
-    </section>
+    `
+  },
 
-    <section class="section" id="masomo">
-      <div class="section-heading"><span class="eyebrow">JIFUNZE KWA UTARATIBU</span><h2>Masomo yetu</h2><p>Chagua somo unalotaka kuanza nalo.</p></div>
-      <div class="cards">
-        <article class="card"><div class="card-icon">۞</div><h3>Qur’an Tukufu</h3><p>Usomaji, tajwidi, kuhifadhi na kuelewa ujumbe wa Qur’an.</p><a href="#maktaba">Fungua somo →</a></article>
-        <article class="card"><div class="card-icon">ﷺ</div><h3>Hadithi</h3><p>Hadithi na mafunzo yake kwa maisha ya kila siku.</p><a href="#maktaba">Fungua somo →</a></article>
-        <article class="card"><div class="card-icon">⚖</div><h3>Fiqhi</h3><p>Misingi ya ibada na masuala ya fiqhi kwa mpangilio.</p><a href="#maktaba">Fungua somo →</a></article>
-        <article class="card"><div class="card-icon">☾</div><h3>Sira</h3><p>Historia ya Mtume ﷺ na mafunzo kutoka katika maisha yake.</p><a href="#maktaba">Fungua somo →</a></article>
-        <article class="card"><div class="card-icon">ع</div><h3>Lugha ya Kiarabu</h3><p>Kusoma, kuandika, sarufi na msamiati wa Kiarabu.</p><a href="#maktaba">Fungua somo →</a></article>
-        <article class="card"><div class="card-icon">✦</div><h3>Aqida na Tarbia</h3><p>Misingi ya itikadi na malezi yenye maadili mema.</p><a href="#maktaba">Fungua somo →</a></article>
+  hadith: {
+    title:"Hadithi",
+    content:`
+      <div class="lesson">
+        <h3>Utangulizi wa Hadithi</h3>
+        <p>Hadithi ni maelezo yanayohusiana na kauli,
+        vitendo na maelekezo ya Mtume ﷺ.</p>
+        <p class="arabic" style="color:#075b43">
+        إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ
+        </p>
       </div>
-    </section>
+    `
+  },
 
-    <section class="library" id="maktaba">
-      <div><span class="eyebrow">MAKTABA YA KIDIGITALI</span><h2>Maarifa yako karibu nawe</h2><p>Hapa ndipo tutaweka vitabu, mihadhara, majaribio na nyenzo za kujifunzia. Toleo hili la mwanzo linaonyesha muundo wa maktaba; maudhui yataongezwa hatua kwa hatua.</p></div>
-      <div class="library-list">
-        <div><span>📖</span><b>Vitabu vya masomo</b><small>Sehemu ya vitabu na PDF</small></div>
-        <div><span>📝</span><b>Mitihani na mazoezi</b><small>Maswali ya kujipima</small></div>
-        <div><span>🎓</span><b>Matokeo na vyeti</b><small>Huduma za wanafunzi</small></div>
+  fiqh: {
+    title:"Fiqhi",
+    content:`
+      <div class="lesson">
+        <h3>Utangulizi wa Fiqhi</h3>
+        <p>Fiqhi ni elimu inayohusu kufahamu hukumu
+        za kivitendo za Kiislamu.</p>
+        <p>Masomo: Twahara, Swala, Saumu, Zaka na Hija.</p>
       </div>
-    </section>
+    `
+  },
 
-    <section class="section about" id="kuhusu">
-      <div class="section-heading"><span class="eyebrow">KUHUSU SISI</span><h2>Elimu inayojenga jamii</h2></div>
-      <p>P. Islamic Academy inalenga kurahisisha upatikanaji wa elimu ya Kiislamu kwa kutumia teknolojia. Tunajenga mazingira ya kujifunza kwa mpangilio, kuheshimu vyanzo vya elimu na kuendeleza tabia njema.</p>
-      <div class="notice"><b>Toleo la awali:</b> Mfumo wa kuingia kwa Pi unaandaliwa kwa majaribio. Mitihani, akaunti za wanafunzi, matokeo na vyeti vitahitaji hatua za ziada za mfumo na hifadhi salama ya data.</div>
-    </section>
-  </main>
+  sira: {
+    title:"Sira ya Mtume",
+    content:`
+      <div class="lesson">
+        <h3>Historia ya Mtume Muhammad ﷺ</h3>
+        <p>Mtume Muhammad ﷺ alizaliwa Makka
+        katika mwaka unaojulikana kama Mwaka wa Tembo.</p>
+        <p>Masomo: Kuzaliwa, Utume, Hijra na maisha yake Madina.</p>
+      </div>
+    `
+  },
 
-  <footer><img src="logo.svg" alt=""><span><b>P. ISLAMIC ACADEMY</b><small>Elimu • Maarifa • Maadili</small></span><p>© <span id="year"></span> P. Islamic Academy</p></footer>
-  <script src="app.js"></script>
+  arabic: {
+    title:"Lugha ya Kiarabu",
+    content:`
+      <div class="lesson">
+        <h3>Herufi za Kiarabu</h3>
+        <p class="arabic" style="color:#075b43">
+        أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن هـ و ي
+        </p>
+        <p>Jifunze herufi, harakati, maneno na sentensi.</p>
+      </div>
+    `
+  },
+
+  aqida: {
+    title:"Aqida",
+    content:`
+      <div class="lesson">
+        <h3>Utangulizi wa Aqida</h3>
+        <p>Aqida inahusu misingi ya imani na itikadi
+        ya Kiislamu.</p>
+        <p>Masomo: Tawhidi, Utume na mambo ya Akhera.</p>
+      </div>
+    `
+  },
+
+  tarbia: {
+    title:"Tarbia",
+    content:`
+      <div class="lesson">
+        <h3>Malezi ya Kiislamu</h3>
+        <p>Elimu ya kujenga tabia njema na maadili.</p>
+        <p>Masomo: Heshima, uaminifu, usafi na nidhamu.</p>
+      </div>
+    `
+  },
+
+  imla: {
+    title:"Imla",
+    content:`
+      <div class="lesson">
+        <h3>Kuandika Kiarabu</h3>
+        <p>Jifunze kuandika herufi na maneno ya Kiarabu
+        kwa usahihi.</p>
+        <p class="arabic" style="color:#075b43">
+        كِتَابٌ - قَلَمٌ - مَسْجِدٌ
+        </p>
+      </div>
+    `
+  }
+
+};
+
+
+// DISPLAY LESSON
+
+function showLesson(name) {
+
+  const lesson = lessons[name];
+
+  if (!lesson) return;
+
+  document.getElementById("lesson-title").textContent =
+    lesson.title;
+
+  document.getElementById("lesson-content").innerHTML =
+    lesson.content;
+
+  document.getElementById("lesson-area").classList.remove("hidden");
+
+  document.getElementById("lesson-area").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+
+// CLOSE LESSON
+
+function closeLesson() {
+  document.getElementById("lesson-area").classList.add("hidden");
+}
+
+
+// SEARCH LIBRARY
+
+function searchLessons() {
+
+  const search = document.getElementById("search")
+    .value.toLowerCase();
+
+  const items = document.querySelectorAll("#library-items .lesson");
+
+  items.forEach(item => {
+
+    const text = item.textContent.toLowerCase();
+
+    item.style.display =
+      text.includes(search) ? "block" : "none";
+
+  });
+
+}
+
+
+// EXAM MARKING
+
+function markExam() {
+
+  let score = 0;
+  let answered = 0;
+
+  for (let i = 1; i <= 3; i++) {
+
+    const answer = document.querySelector(
+      'input[name="q' + i + '"]:checked'
+    );
+
+    if (answer) {
+      answered++;
+      score += Number(answer.value);
+    }
+
+  }
+
+  const result = document.getElementById("exam-result");
+
+  result.classList.remove("hidden");
+
+  if (answered < 3) {
+
+    result.textContent =
+      "Tafadhali jibu maswali yote matatu.";
+
+    return;
+  }
+
+  result.innerHTML =
+    "<h3>Matokeo yako</h3>" +
+    "<p>Alama: <b>" + score + "/3</b></p>" +
+    "<p>Asilimia: <b>" +
+    Math.round(score / 3 * 100) +
+    "%</b></p>" +
+    "<p>" +
+    (score >= 2 ? "Hongera! Umefanya vizuri." :
+    "Endelea kujifunza na kufanya mazoezi.") +
+    "</p>";
+
+}
+
+
+// MANAGEMENT SECTIONS
+
+function showMessage(type) {
+
+  const panel = document.getElementById("management-message");
+
+  const title = document.getElementById("management-title");
+
+  const text = document.getElementById("management-text");
+
+  const messages = {
+
+    student: {
+      title:"Sehemu ya Wanafunzi",
+      text:"Mfumo wa usajili wa wanafunzi na ufuatiliaji wa masomo utaongezwa katika hatua inayofuata."
+    },
+
+    teacher: {
+      title:"Sehemu ya Walimu",
+      text:"Mfumo wa akaunti za walimu, madarasa na usimamizi wa masomo utaongezwa katika hatua inayofuata."
+    },
+
+    results: {
+      title:"Matokeo ya Wanafunzi",
+      text:"Mfumo wa kuingiza alama, kupanga madaraja A hadi F, PASS, FAIL na nafasi za wanafunzi utaongezwa."
+    },
+
+    certificates: {
+      title:"Vyeti",
+      text:"Mfumo wa kutengeneza na kuthibitisha vyeti vya wanafunzi utaongezwa."
+    }
+
+  };
+
+  title.textContent = messages[type].title;
+  text.textContent = messages[type].text;
+
+  panel.classList.remove("hidden");
+
+  panel.scrollIntoView({behavior:"smooth"});
+}
+
+</script>
+
 </body>
 </html>
